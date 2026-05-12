@@ -139,10 +139,36 @@ for(let i=0; i<20; i++) {
     setTimeout(createEmber, i * 100);
 }
 
-// RSVP Form
-document.getElementById('rsvp-form').addEventListener('submit', (e) => {
+// RSVP Form with AJAX
+document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const name = e.target.name.value;
-    alert(`¡Gracias ${name}! Tu mensaje ha sido enviado a los guerreros de la brasa.`);
-    e.target.reset();
+    const form = e.target;
+    const data = new FormData(form);
+    const button = form.querySelector('.btn-submit');
+    const originalText = button.innerText;
+
+    button.innerText = 'ENVIANDO...';
+    button.disabled = true;
+
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            alert(`¡Gracias ${data.get('name')}! Tu mensaje ha sido enviado a los guerreros de la brasa.`);
+            form.reset();
+        } else {
+            alert('Ups! Hubo un problema al enviar el mensaje. Por favor intenta de nuevo.');
+        }
+    } catch (error) {
+        alert('Error de conexión. Intenta de nuevo más tarde.');
+    } finally {
+        button.innerText = originalText;
+        button.disabled = false;
+    }
 });
