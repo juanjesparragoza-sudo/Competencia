@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Gran Competencia de Ribs | Casa de Kira</title>
+    <meta name="description" content="La batalla final por la mejor rib de cerdo. Keyla vs José vs Juan. ¿Quién será la leyenda?">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="flying-ribs-container"></div>
+
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <h1 class="main-title">LA GRAN <span class="highlight">COMPETENCIA</span> DE RIBS</h1>
+            <p class="subtitle">SOLO UNO SERÁ LA LEYENDA</p>
+            
+            <div class="countdown-container">
+                <div class="countdown-box">
+                    <span id="days">00</span>
+                    <label>Días</label>
+                </div>
+                <div class="countdown-box">
+                    <span id="hours">00</span>
+                    <label>Horas</label>
+                </div>
+                <div class="countdown-box">
+                    <span id="minutes">00</span>
+                    <label>Minutos</label>
+                </div>
+                <div class="countdown-box">
+                    <span id="seconds">00</span>
+                    <label>Segundos</label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="competitors">
+        <div class="container">
+            <h2 class="section-title">LOS GUERREROS</h2>
+            <div class="competitor-grid">
+                <div class="competitor-card" onclick="openModal('keyla')">
+                    <div class="card-inner">
+                        <h3>Keyla Daniela</h3>
+                        <p class="role">La Maestra del Fuego</p>
+                        <button class="btn-more">Ver Perfil</button>
+                    </div>
+                </div>
+                <div class="competitor-card" onclick="openModal('jose')">
+                    <div class="card-inner">
+                        <h3>José Alejandro</h3>
+                        <p class="role">El Guardián del Humo</p>
+                        <button class="btn-more">Ver Perfil</button>
+                    </div>
+                </div>
+                <div class="competitor-card" onclick="openModal('juan')">
+                    <div class="card-inner">
+                        <h3>Juan José</h3>
+                        <p class="role">El Señor de la Brasa</p>
+                        <button class="btn-more">Ver Perfil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location">
+        <div class="container">
+            <h2 class="section-title">CAMPO DE BATALLA</h2>
+            <div class="location-content">
+                <div class="address-info">
+                    <h3>Casa de Kira</h3>
+                    <p>Av. Luis María Campos 4354</p>
+                    <p class="date-info">25 de Mayo, 2026</p>
+                </div>
+                <div class="map-container">
+                    <!-- Google Maps Embed for Av. Luis María Campos 4354 -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.34440539162!2d-58.4357776!3d-34.5714088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb597282b090b%3A0x6d90a07e05e3f3b!2sAv.%20Luis%20Mar%C3%ADa%20Campos%204354%2C%20C1425%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1715500000000!5m2!1ses!2sar" 
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rsvp">
+        <div class="container">
+            <h2 class="section-title">¿VIENES A LA GLORIA?</h2>
+            <form id="rsvp-form" class="rsvp-form">
+                <input type="text" name="name" placeholder="Tu Nombre" required>
+                <select name="attendance" required>
+                    <option value="" disabled selected>¿Confirmas asistencia?</option>
+                    <option value="si">¡Obvio, quiero ribs!</option>
+                    <option value="no">Me lo pierdo (error fatal)</option>
+                </select>
+                <textarea name="message" placeholder="Mensaje para los competidores..."></textarea>
+                <button type="submit" class="btn-submit">CONFIRMAR ASISTENCIA</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="modal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - Carne, Fuego y Amistad.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
