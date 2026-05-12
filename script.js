@@ -139,9 +139,38 @@ for(let i=0; i<20; i++) {
     setTimeout(createEmber, i * 100);
 }
 
-// RSVP Form - Plain submission for reliability
-document.getElementById('rsvp-form').addEventListener('submit', function() {
-    const button = this.querySelector('.btn-submit');
+// RSVP Form - Google Sheets (SheetDB)
+document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    const button = form.querySelector('.btn-submit');
+    const originalText = button.innerText;
+
+    // --- REEMPLAZA EL LINK DE ABAJO CON TU API DE SHEETDB ---
+    const SHEETDB_URL = 'https://sheetdb.io/api/v1/TU_ID_AQUI'; 
+
     button.innerText = 'ENVIANDO...';
-    // No preventDefault to allow the form to submit to Formspree
+    button.disabled = true;
+
+    try {
+        const response = await fetch(SHEETDB_URL, {
+            method: 'POST',
+            body: data
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert(`¡Excelente! Tus datos se guardaron en el Excel. ¡Nos vemos en la competencia!`);
+            form.reset();
+        } else {
+            alert('Error al guardar. Asegúrate de haber pegado el link de SheetDB en el código.');
+        }
+    } catch (error) {
+        alert('Hubo un problema de conexión.');
+    } finally {
+        button.innerText = originalText;
+        button.disabled = false;
+    }
 });
