@@ -85,21 +85,21 @@ function createFlyingRib() {
     const rib = document.createElement('img');
     rib.src = ribImage;
     rib.classList.add('flying-rib');
-    
+
     // Randomize properties
     const size = Math.random() * 60 + 40; // 40px to 100px
     const duration = Math.random() * 8 + 12; // 12s to 20s
     const startY = Math.random() * 100;
     const delay = Math.random() * 3;
-    
+
     rib.style.width = `${size}px`;
     rib.style.top = `${startY}vh`;
     rib.style.left = `-150px`;
     rib.style.animationDuration = `${duration}s`;
     rib.style.animationDelay = `${delay}s`;
-    
+
     ribsContainer.appendChild(rib);
-    
+
     setTimeout(() => {
         rib.remove();
     }, (duration + delay) * 1000);
@@ -109,19 +109,19 @@ function createFlyingRib() {
 function createEmber() {
     const ember = document.createElement('div');
     ember.classList.add('ember');
-    
+
     const size = Math.random() * 4 + 2;
     const startX = Math.random() * 100;
     const duration = Math.random() * 3 + 4;
-    
+
     ember.style.width = `${size}px`;
     ember.style.height = `${size}px`;
     ember.style.left = `${startX}vw`;
     ember.style.bottom = `-10px`;
     ember.style.animationDuration = `${duration}s`;
-    
+
     ribsContainer.appendChild(ember);
-    
+
     setTimeout(() => {
         ember.remove();
     }, duration * 1000);
@@ -132,15 +132,15 @@ setInterval(createFlyingRib, 1500); // More frequent ribs
 setInterval(createEmber, 200);      // Frequent embers
 
 // Initial burst
-for(let i=0; i<10; i++) {
+for (let i = 0; i < 10; i++) {
     setTimeout(createFlyingRib, i * 300);
 }
-for(let i=0; i<20; i++) {
+for (let i = 0; i < 20; i++) {
     setTimeout(createEmber, i * 100);
 }
 
 // RSVP Form - Google Sheets (SheetDB)
-document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
+document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
     e.preventDefault();
     const form = e.target;
     const data = new FormData(form);
@@ -148,7 +148,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async function(e
     const originalText = button.innerText;
 
     // --- REEMPLAZA EL LINK DE ABAJO CON TU API DE SHEETDB ---
-    const SHEETDB_URL = 'https://sheetdb.io/api/v1/TU_ID_AQUI'; 
+    const SHEETDB_URL = 'https://sheetdb.io/api/v1/9nc7vtukk9o8y';
 
     button.innerText = 'ENVIANDO...';
     button.disabled = true;
